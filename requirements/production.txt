@@ -1,0 +1,3 @@
+-r deploy.txt
+Logentries==0.17
+python-decouple==3.1
