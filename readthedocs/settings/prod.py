@@ -9,8 +9,22 @@ from .base import CommunityBaseSettings
 class CommunityProdSettings(CommunityBaseSettings):
     """Settings for production."""
 
+    SECRET_KEY = config('SECRET_KEY')
+
+    DEBUG = config('DEBUG', cast=bool, default=False)
+
+    TASTYPIE_FULL_DEBUG = config(
+        'TASTYPIE_FULL_DEBUG',
+        cast=bool,
+        default=DEBUG
+    )
+
+    DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default='')
+
     PRODUCTION_DOMAIN = config('PRODUCTION_DOMAIN')
     WEBSOCKET_HOST = config('WEBSOCKET_HOST')
+
+    ADMINS = []
 
     @property
     def DATABASES(self):  # noqa
